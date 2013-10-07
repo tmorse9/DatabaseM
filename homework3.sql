@@ -120,7 +120,7 @@ WHERE
 --9
 
 SELECT DISTINCT
-  c.name, p.city
+  c.name, c.city
 FROM
   customers c, products p
 WHERE
@@ -129,4 +129,66 @@ WHERE
   c.city = 'Duluth'
 
 --10
+
+SELECT DISTINCT
+  c.name, c.city
+FROM
+  customers c, products p
+WHERE
+  p.city = 'Dallas'
+  AND
+  c.city = 'Dallas'
+
+--11
+
+SELECT DISTINCT
+  c.name, c.city
+FROM
+  customers c, products p
+WHERE
+  p.city = 'Newark'
+  AND
+  c.city = 'Dallas'
+
+--12
+
+SELECT 
+  products.name, products.priceusd
+FROM
+  products
+WHERE
+  priceusd > 
+   (SELECT
+      AVG(products.priceusd)
+    FROM
+      products)
+
+--13
+
+select 
+   c.name, p.pid, o.dollars
+from 
+   orders o, products p, customers c 
+where 
+   o.pid = p.pid 
+   AND 
+   o.cid = c.cid
+ORDER BY
+  o.dollars desc
+
+--14
+
+
+SELECT DISTINCT
+  c.name, SUM(o.dollars)
+FROM 
+  customers c left outer join orders o
+ON
+  c.cid = o.cid
+GROUP BY
+  c.cid
+ORDER BY
+  c.name
+
+--15
 
