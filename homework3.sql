@@ -192,3 +192,43 @@ ORDER BY
 
 --15
 
+select 
+  c.name, p.name, a.name
+from 
+   orders o, products p, agents a, customers c 
+where 
+   o.pid = p.pid 
+   AND 
+   o.aid = a.aid 
+   AND 
+   o.cid = c.cid
+   AND
+   a.city = 'New York'
+
+--16
+
+select 
+  o.dollars
+from 
+   orders o, products p, customers c 
+where 
+   o.pid = p.pid 
+   AND 
+   o.cid = c.cid
+   AND
+   o.dollars = ((p.priceusd * o.qty) - ((p.priceusd * o.qty) * (c.discount*0.01)))
+
+--17
+
+select
+  o.dollars
+from 
+   orders o, products p, customers c 
+where 
+   o.pid = p.pid 
+   AND 
+   o.cid = c.cid
+   AND
+   o.dollars = ((p.priceusd * o.qty) - ((p.priceusd * o.qty) * (c.discount*0.01)))
+-- Change 2 dollars and both disapeared, I did not know how you want it shown
+
