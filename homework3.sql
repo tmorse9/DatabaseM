@@ -230,5 +230,5 @@ where
    o.cid = c.cid
    AND
    o.dollars = ((p.priceusd * o.qty) - ((p.priceusd * o.qty) * (c.discount*0.01)))
--- Change 2 dollars and both disapeared, I did not know how you want it shown
+-- Change two dollars in the orders table and both disapeared, I did not know how you want it shown
 
